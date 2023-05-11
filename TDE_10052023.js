@@ -70,7 +70,7 @@ server.delete("/todo/:id",(req,res)=>{
     toDo = toDo.filter((action)=>{
         return action.id!=id;
     })
-    res.status(204).send() 
+    res.status(204).send()
 })
 
 const port=6060;
