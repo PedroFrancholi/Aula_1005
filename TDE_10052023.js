@@ -76,4 +76,4 @@ server.delete("/todo/:id",(req,res)=>{
 const port=6060;
 server.listen(port,()=>{
     console.log(`server running on port ${port}`)
-})
+})  
