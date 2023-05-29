@@ -3,7 +3,7 @@ const prisma = require("./prisma");
 
 
 const getAllProducts = (moreThan) =>{
-    return prisma.products.findMany({
+    return prisma.Products.findMany({
         where:{
             price:{
                 gt: moreThan
@@ -13,7 +13,7 @@ const getAllProducts = (moreThan) =>{
 }
 
 const getProductById = (id) =>{
-    return prisma.products.findFirst({
+    return prisma.Products.findFirst({
         where:{
             id
         }
@@ -22,14 +22,14 @@ const getProductById = (id) =>{
 
 
 const saveProduct = (product) =>{
-        return prisma.products.create({
+        return prisma.Products.create({
             data: product
         })
 
 }
 
 const updateProduct = (id,product) =>{
-    return prisma.products.update({
+    return prisma.Products.update({
         where:{
             id: id
         },
@@ -39,13 +39,22 @@ const updateProduct = (id,product) =>{
 
 
 const deleteProduct = (id) =>{
-    return prisma.products.delete({
+    return prisma.Products.delete({
         where:{
             id: id
         }
     })
 }
 
+const buyProductByUser = (userId, productId)=>{
+    return prisma.boughtBy.create({
+        data:{
+            userId: userId,
+            productId: productId,
+            quantity,
+        },
+    });
+};
 
 
 module.exports = {
@@ -53,5 +62,6 @@ module.exports = {
     getAllProducts,
     getProductById,
     updateProduct,
-    deleteProduct
+    deleteProduct,
+    buyProductByUser,
 }
